@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- CSS animations -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  
+    </head>
+    <body class="bg">
+        <div class="light-overlay"></div>
+        <div class="nintendo3ds">
+            <div class="display">
+                <div class="scene">
+                    <div class="pkmn-own pkmn animate__animated"></div>
+                    <div class="pkmn-enemy pkmn animate__animated"></div>
+                </div>
+            </div>
+            <div class="secondary-display">
+                <div class="controls">
+                    <button class="btn" onclick="attack(pkmnOwnObj, pkmnEnemyObj)">Fight</button>
+                    <button class="btn" onclick="run(pkmnOwnObj)">Run</button>
+                    <button class="btn">Bag</button>
+                    <button class="btn" onclick="changePkmn()">Pokemon</button>
+                </div>
+                <div class="moves-display">
+                </div>
+            </div>
+            <div class="flicker2"></div>
+            <div class="flicker"></div>
+        </div>
+        <!-- JavaScript -->
+        <script src="js/display.js"></script>
+        <script src="js/animation.js"></script>
+        <script src="js/getPKMN.js"></script>
+        <script src="js/getMoveInfo.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

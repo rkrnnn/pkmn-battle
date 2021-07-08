@@ -1,0 +1,160 @@
+html, body {
+  margin: 0px;
+}
+
+.bg {
+  top: 0px;
+  left: 0px;
+  background: transparent url("../res/bg.png") 0% 0% no-repeat padding-box;
+  background-size: cover;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nintendo3ds {
+  background: transparent url("../res/3ds.png") 0% 0% no-repeat padding-box;
+  background-size: cover;
+  position: absolute;
+  width: 645px;
+  height: 727px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nintendo3ds .display {
+  width: 409px;
+  height: 248px;
+  margin: 71px;
+  border-radius: 5px;
+  background-color: #b8cb70;
+  overflow: hidden;
+}
+
+.nintendo3ds .display .scene {
+  background-color: #b8cb70;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.nintendo3ds .secondary-display {
+  width: 325px;
+  height: 245px;
+  border-radius: 3px;
+  background-color: #b8cb70;
+}
+
+.nintendo3ds .flicker {
+  background-color: #00ff22;
+  width: 5px;
+  height: 10px;
+  margin-left: 466px;
+  margin-top: -10px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-animation: flicker 3s linear infinite;
+          animation: flicker 3s linear infinite;
+  mix-blend-mode: color-dodge;
+}
+
+.nintendo3ds .flicker2 {
+  background-color: rgba(0, 195, 255, 0.986);
+  width: 5px;
+  height: 10px;
+  margin-left: 412px;
+  margin-top: 34px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-animation: flicker2 6s ease-in-out infinite;
+          animation: flicker2 6s ease-in-out infinite;
+  mix-blend-mode: color-dodge;
+}
+
+@-webkit-keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: .4;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.99;
+  }
+}
+
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: .4;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.99;
+  }
+}
+
+@-webkit-keyframes flicker2 {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes flicker2 {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.2;
+  }
+}
+
+.light-overlay {
+  width: 50%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#FEFBDF), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to right, #FEFBDF, rgba(255, 255, 255, 0));
+  background-blend-mode: overlay;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  z-index: -1;
+}
+
+.pkmn {
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-x: 50%;
+  background-position-y: 50%;
+}
+
+.pkmn-own {
+  margin-bottom: -60px;
+}
+/*# sourceMappingURL=style.css.map */
