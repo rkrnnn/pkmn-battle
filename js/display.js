@@ -31,8 +31,9 @@ function displayPkmnMoves() {
     while (i < pkmnOwnObj.moves.length) {
         var moveDIV = document.createElement("DIV");
         moveDIV.classList.add("move");
-        moveDIV.addEventListener("click", function() {
-            attackAnim(pkmnOwnObj);
+        moveDIV.id = i;
+        moveDIV.addEventListener("click", function(event) {
+            attack(pkmnOwnObj, event);
             displayControls.style.display = '';
             displayMoves.style.display = 'none';
             setTimeout(function(){
