@@ -51,6 +51,29 @@ html, body {
         // margin-left: 161px;
         border-radius: 3px;
         background-color: $bg-color-scene;
+
+        .moves-display {
+            background-color: rgba(0, 0, 0, 0.541);
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: flex-end;
+            height: 92%;
+            padding: 10px;
+
+            .move {
+                background-color: red;
+                display: flex;
+                height: 40px;
+                width: 50%;
+                text-align: end;
+                padding-right: 20px;
+                line-height: 2;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        }
     }
 
     .flicker {
@@ -121,5 +144,5 @@ html, body {
 }
 
 .pkmn-own {
-    margin-bottom: -60px;
+    margin-bottom: -100px;
 }

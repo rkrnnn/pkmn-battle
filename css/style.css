@@ -71,6 +71,44 @@ html, body {
   background-color: #b8cb70;
 }
 
+.nintendo3ds .secondary-display .moves-display {
+  background-color: rgba(0, 0, 0, 0.541);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 92%;
+  padding: 10px;
+}
+
+.nintendo3ds .secondary-display .moves-display .move {
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  width: 50%;
+  text-align: end;
+  padding-right: 20px;
+  line-height: 2;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
 .nintendo3ds .flicker {
   background-color: #00ff22;
   width: 5px;
@@ -155,6 +193,6 @@ html, body {
 }
 
 .pkmn-own {
-  margin-bottom: -60px;
+  margin-bottom: -100px;
 }
 /*# sourceMappingURL=style.css.map */

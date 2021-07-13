@@ -7,15 +7,16 @@ async function getMoveInfo(name) {
     return move;
 }
 
+
 async function completeMoveInfo(moveList) {
     var completeMoveList = [];
     
     var i = 0;
     while (i < moveList.length) {
-        var move = await getMoveInfo(moveList[i].name);
+        var move = await getMoveInfo(moveList[i]);
 
         var completedInfo = {};
-        completedInfo.name = moveList[i].name;
+        completedInfo.name = moveList[i];
         completedInfo.accuracy = move.accuracy;
         completedInfo.damage_class = move.damage_class.name;
         completedInfo.type = move.type.name;
@@ -28,4 +29,25 @@ async function completeMoveInfo(moveList) {
     }
 
     return completeMoveList;
+}
+
+
+function addMoves(pkmn) {
+    pkmn.moves = completeMoveInfo(pkmn.moves);
+    pkmn.moves.then(data => pkmn.moves = data);
+}
+
+
+function generateRandomMoveList(nrOfMoves, totalMovesPossible) {
+    var moveList = [];
+
+    var i = 0;
+    while (i < nrOfMoves) {
+        moveList[i] = generateRandomNr(1, totalMovesPossible.length);
+        moveList[i] = totalMovesPossible[moveList[i]].move.name;
+        i++;
+    }
+    
+    moveList[i] = 'rest';
+    return moveList;
 }

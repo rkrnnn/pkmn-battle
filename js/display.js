@@ -1,6 +1,7 @@
 console.log('display.js loaded');
 
 var displayMoves = document.querySelector(".moves-display");
+var displayControls = document.querySelector(".controls");
 
 
 function pkmnVisualInitialDisplay(location, visual) {
@@ -16,21 +17,42 @@ function displayVisuals() {
             loaded = true;
             pkmnVisualInitialDisplay(pkmnOwnObj.display, pkmnOwnObj.sprites.back_default);
             pkmnVisualInitialDisplay(pkmnEnemyObj.display, pkmnEnemyObj.sprites.front_default);
+            
         }
     }
     while (!loaded);
+
 }
 
 
 function displayPkmnMoves() {
-    var moveDIV = document.querySelector("DIV");
-    moveDIV.classList.add("move");
-    var moveNameSPAN = document.querySelector("SPAN");
-    moveNameSPAN.innerText = pkmnOwnObj.moves[0].name;
-    moveDIV.appendChild(moveNameSPAN);
+    displayMoves.innerHTML = '';
+    var i = 0;
+    while (i < pkmnOwnObj.moves.length) {
+        var moveDIV = document.createElement("DIV");
+        moveDIV.classList.add("move");
+        moveDIV.addEventListener("click", function() {
+            attackAnim(pkmnOwnObj);
+            displayControls.style.display = '';
+            displayMoves.style.display = 'none';
+            setTimeout(function(){
+                retaliate(getOpponent(pkmnOwnObj));
+                }, 2000);
+        });
+        var moveNameSPAN = document.createElement("SPAN");
+        moveNameSPAN.innerText = pkmnOwnObj.moves[i].name;
+        moveDIV.appendChild(moveNameSPAN);
+    
+        displayMoves.appendChild(moveDIV);
 
-    displayMoves.appendChild(moveDIV);
+        i++;
+    }
+
+    displayMoves.style.display = '';
+    displayControls.style.display = 'none';
 }
+
+
 
 
 
