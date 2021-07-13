@@ -25,8 +25,15 @@ async function completeMoveInfo(moveList) {
         completedInfo.flavor_text = move.flavor_text_entries[0].flavor_text;
 
         completeMoveList[i] = completedInfo;
+
+        // Set draining-kiss.damage_class and rest.damage_class to healing
+        if ((moveList[i] == 'draining-kiss') || (moveList[i] == 'rest')) {
+            completeMoveList[i].damage_class = 'healing';
+        }
+
         i++;
     }
+
 
     return completeMoveList;
 }
@@ -47,7 +54,7 @@ function generateRandomMoveList(nrOfMoves, totalMovesPossible) {
         moveList[i] = totalMovesPossible[moveList[i]].move.name;
         i++;
     }
-    
+
     moveList[i] = 'rest';
     return moveList;
 }

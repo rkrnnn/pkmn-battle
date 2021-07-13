@@ -11,7 +11,7 @@ function attack(pkmn, move){
     }
 
     console.log(pkmnOwnObj.moves[id]);
-    var dmg = getDmg(pkmnOwnObj.moves[id], pkmnOwnObj);
+    var dmg = getDmg(id, pkmnOwnObj);
     console.log(dmg);
     pkmn.stats.hp = pkmn.stats.hp - dmg;
 }
@@ -35,10 +35,11 @@ function changePkmn() {
 };
 
 
-function getDmg(move, pkmn) {
+function getDmg(moveID, pkmn) {
+    var move = pkmn.moves[moveID];
     var power = move.power;
-    var A = pkmn.stats.attack;
-    var D = getOpponent(pkmn).stats.defense;
+    var A = resolveMoveDmgClass(move, pkmn);
+    var D = resolveDefenceClass(move, getOpponent(pkmn));
     var crit = generateRandomNr(1, 2);
     var random = generateRandomNr(85, 100) / 100;
     var stab = 1.5;
@@ -47,6 +48,30 @@ function getDmg(move, pkmn) {
 
     console.log('(((' + power + ' * (' + A + ' / ' + D + ')) / 50) + 2) * ' + crit + ' * ' + random + ' * ' + stab + ' * ' + type + ' = ' + dmg);
     return dmg;
+}
+
+function resolveMoveDmgClass(move, pkmn) {
+    console.log('Move is a ' + move.damage_class + ' move.');
+    if (move.damage_class == 'special') {
+        var damage = pkmn.stats.special_attack;
+    }
+    else {
+        var damage = pkmn.stats.attack;
+    }
+
+    return damage;
+}
+
+function resolveDefenceClass(move, pkmn) {
+    console.log('Defence is thus ' + move.damage_class + ' .');
+    if (move.damage_class == 'special') {
+        var def = pkmn.stats.special_defense;
+    }
+    else {
+        var def = pkmn.stats.defense;
+    }
+
+    return def;
 }
 
 
