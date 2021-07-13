@@ -11,7 +11,7 @@ function attack(pkmn, move){
     }
 
     console.log(pkmnOwnObj.moves[id]);
-    var dmg = pkmnOwnObj.moves[id].power;
+    var dmg = getDmg(pkmnOwnObj.moves[id], pkmnOwnObj);
     console.log(dmg);
     pkmn.stats.hp = pkmn.stats.hp - dmg;
 }
@@ -33,5 +33,20 @@ function changePkmn() {
 
     getSingleData(pkmnOwnObj);
 };
+
+
+function getDmg(move, pkmn) {
+    var power = move.power;
+    var A = pkmn.stats.attack;
+    var D = getOpponent(pkmn).stats.defense;
+    var crit = generateRandomNr(1, 2);
+    var random = generateRandomNr(85, 100) / 100;
+    var stab = 1.5;
+    var type = 1;
+    var dmg = (((power * (A / D)) / 50) + 2) * crit * random * stab * type;
+
+    console.log('(((' + power + ' * (' + A + ' / ' + D + ')) / 50) + 2) * ' + crit + ' * ' + random + ' * ' + stab + ' * ' + type + ' = ' + dmg);
+    return dmg;
+}
 
 
