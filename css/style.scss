@@ -31,26 +31,79 @@ html, body {
         width: 409px;
         height: 248px;
         margin: 71px;
-        // margin-left: 118px;
         border-radius: 5px;
-        background-color: $bg-color-scene;
+        background: rgb(132,203,112);
+        background: linear-gradient(0deg, rgba(132,203,112,1) 0%, rgba(165,213,62,1) 35%, rgba(254,255,239,1) 100%);
         overflow: hidden;
+
         .scene {
-            background-color: $bg-color-scene;
             border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: row;
+            z-index: -10;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: -40px;
+            padding: 8px;
+
+            font-weight: 800;
+            font-family: Roboto;
+            font-size: 11pt;
+            color: black;
+
+            .enemy-stats {
+                .row2 {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+            }
+
+            .row1 {
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    padding: 4px;
+                }
+
+                .current-hp {
+                    color: #5ba668;
+                }
+            }
+
+            .row2 {
+                border: 1px solid white;
+                border-radius: 5px;
+
+                .total-hp-graphic {
+                    width: 140px;
+                    height: 7px;
+                    background-color: #5ba6675b;
+                    border-radius: 5px;
+                }
+                .current-hp-graphic {
+                    width: 100px;
+                    height: 7px;
+                    background-color: #5ba668;
+                    border-radius: 5px;
+                    margin-top: -7px;
+                }
+            }
         }
     }
 
     .secondary-display {
         width: 325px;
         height: 245px;
-        // margin-left: 161px;
         border-radius: 3px;
-        background-color: $bg-color-scene;
+        background: rgb(46,158,144);
+        background: radial-gradient(circle, rgba(46,158,144,1) 0%, rgba(91,185,34,1) 63%, rgba(158,241,129,1) 100%);
 
         .moves-display {
             background-color: rgba(0, 0, 0, 0.541);
