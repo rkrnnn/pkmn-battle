@@ -9,37 +9,51 @@
         <div class="light-overlay"></div>
         <div class="nintendo3ds">
 
-            <div class="display">
-                <div class="stats">
+            <div class="display" >
+                <div class="stats animate__animated" style="display: none">
                     <div class="own-stats">
                         <div class="row1">
-                            <div class="name">Etc</div>
+                            <div class="name"></div>
                             <div class="hp-numbers">
                                 <span class="current-hp">99</span>/<span class="total-hp">99</span>
                             </div>
                         </div>
                         <div class="row2">
                             <div class="total-hp-graphic"></div>
-                            <div class="current-hp-graphic"></div>
+                            <div class="current-hp-graphic own"></div>
                         </div>
                     </div>
                     <div class="enemy-stats">
                         <div class="row1">
-                            <div class="name">Etc</div>
+                            <div class="name"></div>
                             <div class="hp-numbers">
                                 <span class="current-hp">99</span>/<span class="total-hp">99</span>
                             </div>
                         </div>
                         <div class="row2">
                             <div class="total-hp-graphic"></div>
-                            <div class="current-hp-graphic"></div>
+                            <div class="current-hp-graphic enemy"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="scene">
+                <div class="scene  animate__animated" style="display: none;">
                     <div class="pkmn-own pkmn animate__animated"></div>
+                    <div class="standing-spot own"></div>
                     <div class="pkmn-enemy pkmn animate__animated"></div>
+                    <div class="standing-spot enemy"></div>
+                </div>
+
+                <div class="dialogue animate__animated" style="display: none">
+                    <div class="default">
+                        What will <span class="own pkmn-name values">POKEMON</span> do?
+                    </div>
+                    <div class="attack" style="display: none">
+                        <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It dealt <span class="dmg values">DMG</span> damage.
+                    </div>
+                    <div class="heal" style="display: none">
+                        <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It recovered <span class="heal-pts values">HEAL</span> HP.
+                    </div>
                 </div>
             </div>
 

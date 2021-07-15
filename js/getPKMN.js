@@ -78,6 +78,7 @@ async function getPKMNinfo(name) {
 function saveToLocal(json, pkmn) {
     pkmn.name = json.species.name;
     pkmn.stats.hp = json.stats[0].base_stat;
+    pkmn.stats.hp_current = json.stats[0].base_stat;
     pkmn.stats.attack = json.stats[1].base_stat;
     pkmn.stats.defense = json.stats[2].base_stat;
     pkmn.stats.special_attack = json.stats[3].base_stat;
