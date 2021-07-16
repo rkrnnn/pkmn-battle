@@ -1,44 +1,71 @@
 console.log("main.js loaded");
 
+var winCondition = false;
 
-function attack(pkmn, move){
-    displayPkmnMoves();
-    attackAnim(pkmn);
-    
-    var id = move.target.id;
-    if (id == '') {
-        id = move.target.parentElement.id;
-    }
-    
+function applyMove(pkmn, id){
     console.log(pkmnOwnObj.moves[id]);
     var dmg = getDmg(id, pkmnOwnObj);
     console.log(dmg);
-    getOpponent(pkmn).stats.hp_current = getOpponent(pkmn).stats.hp_current - Math.round(dmg);
+    
+    if (pkmn.moves[id].damage_class == 'healing') {
+        dmg = 5;
+        heal(pkmn, dmg);
+    }
+    else {
+        attack(pkmn, dmg);
+    }
+    
     setTimeout(function(){
         updateDisplayStats();
-        }, 2000);
+    }, 2000);
+    
+    createDialogue(pkmn.moves[id].damage_class, pkmn, pkmn.moves[id], Math.round(dmg));
 
-    createDialogue(pkmn.moves[id].damage_class, pkmn, pkmn.moves[id], Math.round(dmg))
+    setTimeout(function(){
+        if (checkWinCondition()) {
+            
+            displayWinner(checkWinCondition());
+        }
+        }, 5000);
+    
 }
 
+
 function retaliate(pkmn) {
-    attackAnim(pkmn);
-
     var moveID = generateRandomNr(0,3);
-    
-    var dmg = getDmg(moveID, pkmn);
-    console.log(dmg);
-    getOpponent(pkmn).stats.hp_current = getOpponent(pkmn).stats.hp_current - Math.round(dmg);
-    setTimeout(function(){
-        updateDisplayStats();
-        }, 2000);
+    applyMove(pkmn, moveID);
+}
 
-    createDialogue(pkmn.moves[moveID].damage_class, pkmn, pkmn.moves[moveID], Math.round(dmg))
+
+function heal(pkmn, dmg) {
+    if (!checkHealCondition(pkmn, dmg)) {
+        pkmn.stats.hp_current = pkmn.stats.hp;
+    }
+    else {
+        pkmn.stats.hp_current = pkmn.stats.hp_current + dmg;
+    }
+
+    healAnim(pkmn);
+}
+
+
+function attack(pkmn, dmg) {
+    // dmg = dmg + 10;
+    if (!checkDamageCondition(getOpponent(pkmn), dmg)) {
+        getOpponent(pkmn).stats.hp_current = 0;
+        winCondition = true;
+    }
+    else {
+        getOpponent(pkmn).stats.hp_current = getOpponent(pkmn).stats.hp_current - Math.round(dmg);
+    }
+
+    attackAnim(pkmn);
 }
 
 
 function run(pkmn) {
     runAnim(pkmn);
+    displayRestartScreen();
 }
 
 
@@ -86,6 +113,44 @@ function resolveDefenceClass(move, pkmn) {
     }
 
     return def;
+}
+
+function checkHealCondition(pkmn, dmg) {
+    var result = true;
+    if ((pkmn.stats.hp_current + dmg) > pkmn.stats.hp) {
+        result = false;
+    }
+    return result;
+}
+
+function checkDamageCondition(pkmn, dmg) {
+    var result = true;
+    if ((pkmn.stats.hp_current - dmg) < 0) {
+        result = false;
+    }
+    return result;
+}
+
+
+function checkWinCondition() {
+    if (pkmnOwnObj.stats.hp_current == 0) {
+        winCondition = true;
+        return getOpponent(pkmnOwnObj);
+    }
+    else {
+        if (getOpponent(pkmnOwnObj).stats.hp_current == 0) {
+            winCondition = true;
+            return pkmnOwnObj;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+
+function retry() {
+    location.reload();
 }
 
 

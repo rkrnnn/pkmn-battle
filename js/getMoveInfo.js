@@ -50,7 +50,7 @@ function generateRandomMoveList(nrOfMoves, totalMovesPossible) {
 
     var i = 0;
     while (i < nrOfMoves) {
-        moveList[i] = generateRandomNr(1, totalMovesPossible.length);
+        moveList[i] = generateRandomNr(1, totalMovesPossible.length - 1);
         moveList[i] = totalMovesPossible[moveList[i]].move.name;
         i++;
     }

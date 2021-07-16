@@ -6,6 +6,7 @@ var dialogueDisplay = document.querySelector(".dialogue");
 
 var displayMoves = document.querySelector(".moves-display");
 var displayControls = document.querySelector(".controls");
+var displayRestart = document.querySelector(".secondary-display > .end");
 
 var ownPkmnNameDisplay = document.querySelector(".own-stats > .row1 > .name");
 var enemyPkmnNameDisplay = document.querySelector(".enemy-stats > .row1 > .name");
@@ -26,9 +27,12 @@ function pkmnVisualInitialDisplay(location, visual) {
 
 function displayVisuals() {
     var loaded = false;
+    displayRestartScreen();
     do {
         if (loadedData >= 2) {
             loaded = true;
+            displayRestart.style.display = 'none';
+            displayControls.style.display = '';
             
             pkmnVisualInitialDisplay(pkmnOwnObj.display, pkmnOwnObj.sprites.back_default);
             pkmnVisualInitialDisplay(pkmnEnemyObj.display, pkmnEnemyObj.sprites.front_default);
@@ -56,12 +60,15 @@ function displayPkmnMoves() {
         moveDIV.classList.add("move");
         moveDIV.id = i;
         moveDIV.addEventListener("click", function(event) {
-            attack(pkmnOwnObj, event);
+            var id = getIDofMove(event);
+            applyMove(pkmnOwnObj, id);
             displayControls.style.display = '';
             displayMoves.style.display = 'none';
-            setTimeout(function(){
-                retaliate(getOpponent(pkmnOwnObj));
-                }, 3000);
+            if (!checkWinCondition()) {
+                setTimeout(function(){
+                    retaliate(getOpponent(pkmnOwnObj));
+                    }, 3000);
+            }
         });
         var moveNameSPAN = document.createElement("SPAN");
         moveNameSPAN.innerText = pkmnOwnObj.moves[i].name;
@@ -74,6 +81,16 @@ function displayPkmnMoves() {
 
     displayMoves.style.display = '';
     displayControls.style.display = 'none';
+}
+
+
+function getIDofMove(event) {
+    var id = event.target.id;
+    if (id == '') {
+        id = event.target.parentElement.id;
+    }
+
+    return id;
 }
 
 
@@ -96,22 +113,30 @@ function displayDialogue() {
 
 
 function resetDialogue() {
-    var nameInstances = dialogueDisplay.querySelectorAll(".own.pkmn-name");
+    var nameOwnInstances = dialogueDisplay.querySelectorAll(".pkmn-name.own");
+    var nameEnemyInstances = dialogueDisplay.querySelectorAll(".pkmn-name.enemy");
     var i = 0;
-    while (i <nameInstances.length) {
-        nameInstances[i].innerText = pkmnOwnObj.name;
+    while (i < nameOwnInstances.length) {
+        nameOwnInstances[i].innerText = pkmnOwnObj.name;
+        i++;
+    }
+
+    var i = 0;
+    while (i < nameEnemyInstances.length) {
+        nameEnemyInstances[i].innerText = pkmnEnemyObj.name;
         i++;
     }
 }
 
 function createDialogue(inputType, pkmn, move, dmg) {
     var nameInstances = dialogueDisplay.querySelectorAll(".pkmn-name");
+    
     var moveInstances = dialogueDisplay.querySelectorAll(".move");
     var dmgInstance = dialogueDisplay.querySelector(".dmg");
     var healInstance = dialogueDisplay.querySelector(".heal-pts");
 
     switch (inputType) {
-        case 'special': case 'physical':
+        case 'special': case 'physical': case 'status': 
             dialogueDisplay.querySelector(".default").style.display = 'none';
             dialogueDisplay.querySelector(".attack").style.display = '';
             dialogueDisplay.querySelector(".heal").style.display = 'none';
@@ -129,7 +154,7 @@ function createDialogue(inputType, pkmn, move, dmg) {
             dmgInstance.innerText = dmg;
             break;
         
-        case 'status': case 'healing':
+        case 'healing':
             dialogueDisplay.querySelector(".default").style.display = 'none';
             dialogueDisplay.querySelector(".attack").style.display = 'none';
             dialogueDisplay.querySelector(".heal").style.display = '';
@@ -151,6 +176,9 @@ function createDialogue(inputType, pkmn, move, dmg) {
             dialogueDisplay.querySelector(".default").style.display = '';
             dialogueDisplay.querySelector(".attack").style.display = 'none';
             dialogueDisplay.querySelector(".heal").style.display = 'none';
+
+            
+
             break;
     }
 }
@@ -163,6 +191,27 @@ function updateDisplayStats() {
     ownPkmnCurrentHpGraphic.style.width = (pkmnOwnObj.stats.hp_current / pkmnOwnObj.stats.hp) * 100 + '%';
     enemyPkmnCurrentHpDisplay.innerText = getOpponent(pkmnOwnObj).stats.hp_current;
     enemyPkmnCurrentHpGraphic.style.width = (getOpponent(pkmnOwnObj).stats.hp_current / getOpponent(pkmnOwnObj).stats.hp) * 100 + '%';
+}
+
+
+function displayWinner(pkmn) {
+    dialogueDisplay.querySelector(".default").style.display = 'none';
+    dialogueDisplay.querySelector(".attack").style.display = 'none';
+    dialogueDisplay.querySelector(".heal").style.display = 'none';
+    dialogueDisplay.querySelector(".end").style.display = '';
+
+    dialogueDisplay.querySelector(".pkmn-name.won").innerText = pkmn.name;
+    dialogueDisplay.querySelector(".pkmn-name.lost").innerText = getOpponent(pkmn).name;
+    setTimeout(function(){
+        looseAnim(getOpponent(pkmn));
+        displayRestartScreen();
+        }, 1500);
+}
+
+
+function displayRestartScreen() {
+    displayMoves.style.display = 'none';
+    displayRestart.style.display = '';
 }
 
 

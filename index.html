@@ -46,13 +46,19 @@
 
                 <div class="dialogue animate__animated" style="display: none">
                     <div class="default">
-                        What will <span class="own pkmn-name values">POKEMON</span> do?
+                        You encountered a wild <span class="enemy pkmn-name values">POKEMON</span> ! What will <span class="own pkmn-name values">POKEMON</span> do?
                     </div>
                     <div class="attack" style="display: none">
                         <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It dealt <span class="dmg values">DMG</span> damage.
                     </div>
                     <div class="heal" style="display: none">
                         <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It recovered <span class="heal-pts values">HEAL</span> HP.
+                    </div>
+                    <div class="end" style="display: none">
+                        <span class="pkmn-name values won">POKEMON</span> won the fight! <span class="pkmn-name values lost">POKEMON</span> lost. RIP lil guy.
+                    </div>
+                    <div class="run" style="display: none">
+                        <span class="pkmn-name values run">POKEMON</span> eascaped!
                     </div>
                 </div>
             </div>
@@ -65,6 +71,12 @@
                     <button class="btn" onclick="changePkmn()">Pokemon</button>
                 </div>
                 <div class="moves-display" style="display: none;">
+                </div>
+                <div class="end" style="display: none;">
+                    <div class="restart" onclick="retry()">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        Retry
+                    </div>
                 </div>
             </div>
 

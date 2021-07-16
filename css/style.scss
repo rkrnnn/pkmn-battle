@@ -1,6 +1,9 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
 $bg-color: white;
 $bg-color-scene: #b8cb70;
 $light-color: #FEFBDF;
+
 
 html, body {
     margin: 0px;
@@ -170,6 +173,46 @@ html, body {
                 align-items: center;
                 justify-content: flex-end;
                 cursor: pointer;
+            }
+        }
+
+        .end {
+            background-color: rgba(0, 0, 0, 0.541);
+            color: white;
+            display: flex;
+            height: 34%;
+            width: 51%;
+            margin-top: -21px;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+
+            .restart {
+                font-size: 12pt;
+                font-weight: 600;
+                letter-spacing: 5;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+
+                transition: all .5s ease-in-out;
+
+                padding: 20px;
+                border: 1px solid white;
+                border-radius: 6px;
+
+                i {
+                    font-size: 16pt;
+                    margin: 4px;
+                }
+            }
+
+            .restart:hover {
+                background-color: white;
+                color: black;
+                cursor: pointer;
+                
             }
         }
     }

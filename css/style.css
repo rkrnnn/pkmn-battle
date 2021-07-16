@@ -1,3 +1,4 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 html, body {
   margin: 0px;
   font-family: roboto;
@@ -220,6 +221,58 @@ html, body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  cursor: pointer;
+}
+
+.nintendo3ds .secondary-display .end {
+  background-color: rgba(0, 0, 0, 0.541);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 34%;
+  width: 51%;
+  margin-top: -21px;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nintendo3ds .secondary-display .end .restart {
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+}
+
+.nintendo3ds .secondary-display .end .restart i {
+  font-size: 16pt;
+  margin: 4px;
+}
+
+.nintendo3ds .secondary-display .end .restart:hover {
+  background-color: white;
+  color: black;
   cursor: pointer;
 }
 
