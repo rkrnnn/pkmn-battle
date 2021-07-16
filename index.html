@@ -49,7 +49,11 @@
                         You encountered a wild <span class="enemy pkmn-name values">POKEMON</span> ! What will <span class="own pkmn-name values">POKEMON</span> do?
                     </div>
                     <div class="attack" style="display: none">
-                        <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It dealt <span class="dmg values">DMG</span> damage.
+                        <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. 
+                        <span class="eff05" style="display: none">It is not very effective...</span>
+                        <span class="eff0" style="display: none">It is not effective...</span>
+                        <span class="eff2" style="display: none">It is super effective!</span> 
+                        It dealt <span class="dmg values">DMG</span> damage.
                     </div>
                     <div class="heal" style="display: none">
                         <span class="pkmn-name values">POKEMON</span> used <span class="move values">MOVE</span>. It recovered <span class="heal-pts values">HEAL</span> HP.
@@ -58,7 +62,7 @@
                         <span class="pkmn-name values won">POKEMON</span> won the fight! <span class="pkmn-name values lost">POKEMON</span> lost. RIP lil guy.
                     </div>
                     <div class="run" style="display: none">
-                        <span class="pkmn-name values run">POKEMON</span> eascaped!
+                        <span class="pkmn-name values run">POKEMON</span> escaped safely!
                     </div>
                 </div>
             </div>
@@ -67,8 +71,8 @@
                 <div class="controls">
                     <button class="btn" onclick="displayPkmnMoves()">Fight</button>
                     <button class="btn" onclick="run(pkmnOwnObj)">Run</button>
-                    <button class="btn">Bag</button>
-                    <button class="btn" onclick="changePkmn()">Pokemon</button>
+                    <!-- <button class="btn">Bag</button>
+                    <button class="btn" onclick="changePkmn()">Pokemon</button> -->
                 </div>
                 <div class="moves-display" style="display: none;">
                 </div>
@@ -85,6 +89,7 @@
         </div>
 
         <!-- JavaScript -->
+        <script src="js/typeEffectivenessChart.js"></script>
         <script src="js/display.js"></script>
         <script src="js/animation.js"></script>
         <script src="js/getPKMN.js"></script>

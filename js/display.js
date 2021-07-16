@@ -171,6 +171,20 @@ function createDialogue(inputType, pkmn, move, dmg) {
             }
             healInstance.innerText = dmg;
             break;
+
+        case 'run':
+            dialogueDisplay.querySelector(".default").style.display = 'none';
+            dialogueDisplay.querySelector(".attack").style.display = 'none';
+            dialogueDisplay.querySelector(".heal").style.display = 'none';
+            dialogueDisplay.querySelector(".run").style.display = '';
+            
+            var i = 0;
+            while (i < nameInstances.length) {
+                nameInstances[i].innerText = pkmn.name;
+                i++;
+            }
+            
+            break;
     
         default:
             dialogueDisplay.querySelector(".default").style.display = '';
@@ -182,6 +196,32 @@ function createDialogue(inputType, pkmn, move, dmg) {
             break;
     }
 }
+
+function displayEffectivenessDialogue(dmg) {
+    switch (dmg) {
+        case 2:
+            dialogueDisplay.querySelector(".eff2").style.display = '';
+            dialogueDisplay.querySelector(".eff0").style.display = 'none';
+            dialogueDisplay.querySelector(".eff05").style.display = 'none';
+            break;
+        case 0.5:
+            dialogueDisplay.querySelector(".eff2").style.display = 'none';
+            dialogueDisplay.querySelector(".eff0").style.display = 'none';
+            dialogueDisplay.querySelector(".eff05").style.display = '';
+            break;
+        case 0:
+            dialogueDisplay.querySelector(".eff2").style.display = 'none';
+            dialogueDisplay.querySelector(".eff0").style.display = '';
+            dialogueDisplay.querySelector(".eff05").style.display = 'none';
+            break;
+        default:
+            dialogueDisplay.querySelector(".eff2").style.display = 'none';
+            dialogueDisplay.querySelector(".eff0").style.display = 'none';
+            dialogueDisplay.querySelector(".eff05").style.display = 'none';
+            break;
+    }
+}
+
 
 function updateDisplayStats() {
     ownPkmnTotalHpDisplay.innerText = pkmnOwnObj.stats.hp;
@@ -213,6 +253,9 @@ function displayRestartScreen() {
     displayMoves.style.display = 'none';
     displayRestart.style.display = '';
 }
+
+
+
 
 
 

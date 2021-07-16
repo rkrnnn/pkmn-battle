@@ -65,6 +65,7 @@ function attack(pkmn, dmg) {
 
 function run(pkmn) {
     runAnim(pkmn);
+    createDialogue('run', pkmn);
     displayRestartScreen();
 }
 
@@ -83,8 +84,8 @@ function getDmg(moveID, pkmn) {
     var D = resolveDefenceClass(move, getOpponent(pkmn));
     var crit = generateRandomNr(1, 2);
     var random = generateRandomNr(85, 100) / 100;
-    var stab = 1.5;
-    var type = 1;
+    var stab = resolveSTAB(move, pkmn);
+    var type = resolveTypeEffectiveness(move, getOpponent(pkmn));
     var dmg = (((power * (A / D)) / 50) + 2) * crit * random * stab * type;
 
     console.log('(((' + power + ' * (' + A + ' / ' + D + ')) / 50) + 2) * ' + crit + ' * ' + random + ' * ' + stab + ' * ' + type + ' = ' + dmg);
@@ -92,7 +93,7 @@ function getDmg(moveID, pkmn) {
 }
 
 function resolveMoveDmgClass(move, pkmn) {
-    console.log('Move ' + move.name + ' is a ' + move.damage_class + ' move.');
+    // console.log('Move ' + move.name + ' is a ' + move.damage_class + ' move.');
     if (move.damage_class == 'special') {
         var damage = pkmn.stats.special_attack;
     }
@@ -103,8 +104,35 @@ function resolveMoveDmgClass(move, pkmn) {
     return damage;
 }
 
+
+function resolveSTAB(move, pkmn) {
+    var stab = 1;
+    if( move.type == pkmn.type) {
+        stab = 1.5;
+    }
+    
+    return stab;
+}
+
+function resolveTypeEffectiveness(move, pkmn) {
+    var typeDmg = 1;
+    var totalTypes = pkmn.type.length;
+    var i = 0;
+    while (i < totalTypes) {
+        var pkmnType = pkmn.type[i];
+        var moveType = move.type;
+        console.log(typeEffectivenessChart[pkmnType]);
+        typeDmg = typeEffectivenessChart[pkmnType][moveType];
+        i++;
+    }
+    console.log("Efficiency: " + typeDmg);
+    displayEffectivenessDialogue(typeDmg);
+    return typeDmg;
+}
+
+
 function resolveDefenceClass(move, pkmn) {
-    console.log('Defence is thus ' + move.damage_class + ' .');
+    // console.log('Defence is thus ' + move.damage_class + ' .');
     if (move.damage_class == 'special') {
         var def = pkmn.stats.special_defense;
     }
