@@ -146,11 +146,66 @@ html, body {
     }
 
     .secondary-display {
+        overflow: hidden;
         width: 325px;
         height: 245px;
         border-radius: 3px;
         background: rgb(46,158,144);
         background: radial-gradient(circle, rgba(46,158,144,1) 0%, rgba(91,185,34,1) 63%, rgba(158,241,129,1) 100%);
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+            .btn {
+                width: 100px;
+                // height: 50px;
+                color: white;
+                font-size: 12pt;
+                font-weight: 600;
+                letter-spacing: 5;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+
+                margin: 8px;
+                padding: 20px;
+                border: 1px solid white;
+                border-radius: 6px;
+
+                cursor: pointer;
+
+                transition: all .5s ease-in-out;
+
+            }
+
+            .fight {
+                background: rgb(184,26,26);
+                background: linear-gradient(0deg, rgba(184,26,26,1) 0%, rgba(241,16,16,1) 39%, rgba(255,46,118,1) 100%);
+                transition: all .5s ease-in-out;
+            }
+
+            .fight:hover {
+                background: rgb(168,3,3);
+                background: linear-gradient(0deg, rgba(168,3,3,1) 0%, rgba(222,16,16,1) 75%, rgba(255,47,120,1) 100%);
+            }
+
+            .run {
+                background: rgb(255,154,49);
+                background: linear-gradient(0deg, rgba(255,154,49,1) 0%, rgba(255,203,16,1) 66%, rgba(255,220,46,1) 100%);
+                transition: all .5s ease-in-out;
+            }
+
+            .run:hover {
+                background: rgb(255,102,49);
+                background: linear-gradient(0deg, rgba(255,102,49,1) 0%, rgba(255,156,48,1) 73%, rgba(255,203,16,1) 100%, rgba(255,220,46,1) 100%);
+            }
+        }
 
         .moves-display {
             background-color: rgba(0, 0, 0, 0.541);
@@ -158,21 +213,54 @@ html, body {
             display: flex;
             justify-content: space-evenly;
             flex-direction: column;
-            align-items: flex-end;
             height: 92%;
             padding: 10px;
+            align-items: flex-end;
+            margin-right: -27px;
+            transition: all .25s ease-out;
 
             .move {
-                background-color: red;
                 display: flex;
-                height: 40px;
-                width: 50%;
+                height: 24px;
+                width: 75%;
                 text-align: end;
-                padding-right: 20px;
+                padding: 13px;
                 line-height: 2;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: flex-start;
                 cursor: pointer;
+                text-transform: capitalize;
+                margin: 3px;
+                border: 1px solid white;
+                border-radius: 6px;
+                cursor: pointer;
+                flex-direction: row;
+                transition: all .25s ease-out;
+
+            }
+
+            .electric {
+                background: rgb(255,176,31);
+                background: linear-gradient(0deg, rgba(255,176,31,1) 0%, rgba(222,146,16,1) 52%, rgba(255,241,40,1) 100%);
+            }
+
+            .fairy {
+                background: rgb(233,5,96);
+                background: linear-gradient(0deg, rgba(233,5,96,1) 0%, rgba(255,44,150,1) 52%, rgba(255,175,245,1) 100%);
+            }
+
+            .normal {
+                background: rgb(59,56,55);
+                background: linear-gradient(0deg, rgba(59,56,55,1) 0%, rgba(170,161,148,1) 67%, rgba(204,186,168,1) 100%);
+            }
+
+            .water {
+                background: rgb(9,75,131);
+                background: linear-gradient(0deg, rgba(9,75,131,1) 0%, rgba(64,146,177,1) 59%, rgba(145,211,227,1) 100%);
+            }
+
+            .move:hover {
+                width: 85%;
             }
         }
 
@@ -182,7 +270,6 @@ html, body {
             display: flex;
             height: 34%;
             width: 51%;
-            margin-top: -21px;
             position: absolute;
             align-items: center;
             justify-content: center;

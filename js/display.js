@@ -58,6 +58,7 @@ function displayPkmnMoves() {
     while (i < pkmnOwnObj.moves.length) {
         var moveDIV = document.createElement("DIV");
         moveDIV.classList.add("move");
+        moveDIV.classList.add(pkmnOwnObj.moves[i].type);
         moveDIV.id = i;
         moveDIV.addEventListener("click", function(event) {
             var id = getIDofMove(event);
@@ -251,6 +252,7 @@ function displayWinner(pkmn) {
 
 function displayRestartScreen() {
     displayMoves.style.display = 'none';
+    displayControls.style.display = 'none';
     displayRestart.style.display = '';
 }
 

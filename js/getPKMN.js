@@ -11,7 +11,7 @@ var pkmnOwnObj = {
         special_defense: 0,
         speed: 0
     },
-    moves: ['thunderbolt', 'draining-kiss', 'nuzzle', 'slam'],
+    moves: ['thunderbolt', 'draining-kiss', 'surf', 'slam'],
     type: [],
     sprites: {}
 };;
